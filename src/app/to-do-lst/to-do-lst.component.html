@@ -1,0 +1,10 @@
+<h3>To Dos</h3>
+
+<div *ngFor="let todo of todolist;" id="toDos" class="mt-3 px-5 mx-5">
+    <div class="row border px-0 mt-1" [id]="todo.toDoId">
+        <p class="col-11" style="word-wrap: break-word;">{{todo.toDoText}}</p>
+        <div class="col-1 px-0">
+            <div class="btn btn-floating btn-close float-end" [id]="todo.toDoId"></div>
+        </div>
+    </div>
+</div>
