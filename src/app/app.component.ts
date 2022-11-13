@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { ToDo } from './to-do';
+import { ToDoLstComponent } from './to-do-lst/to-do-lst.component';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,7 @@ import { ToDo } from './to-do';
 })
 export class AppComponent {
   title = 'ToDoApp';
+  // @ViewChild(ToDoLstComponent) todolistcomponent!: ToDoLstComponent;
 
-
-  todolist :ToDo[] = [];
-
-  addToDo(todo :ToDo) : void {
-    this.todolist.push(todo);
-  }
+  constructor() { }
 }

@@ -1,5 +1,5 @@
-import { getLocaleEraNames } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TodoService } from '../services/todoservices/todo.service';
 import { ToDo } from '../to-do';
 
 @Component({
@@ -10,25 +10,16 @@ import { ToDo } from '../to-do';
 export class TopBarComponent implements OnInit {
 
   @Output() addToDoEvent = new EventEmitter<ToDo>();
+ 
 
-  todo: ToDo = {
-    toDoId: 0,
-    toDoText: ""
-  }
-  constructor() { }
+  toDoText :string ="";
+  constructor(private todoservice :TodoService) { }
 
   ngOnInit(): void {
   }
 
   addToDo(): void {
-    console.log(this.todo);
-    if (this.todo.toDoText.length == 0) {
-      alert("Please enter some text");
-      return;
-    }
-    this.todo.toDoId++;
-    let a={...this.todo}
-    this.addToDoEvent.emit(a);
-    this.todo.toDoText="";
+    this.todoservice.addToDo(this.toDoText);
+    this.toDoText = "";
   }
 }

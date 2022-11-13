@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TodoService } from '../services/todoservices/todo.service';
 import { ToDo } from '../to-do';
 
 @Component({
@@ -8,12 +9,16 @@ import { ToDo } from '../to-do';
 })
 export class ToDoLstComponent implements OnInit {
 
-  constructor() { }
+  constructor(private todoservice: TodoService) { }
 
-  @Input()
-  todolist: ToDo[] = [];
+  
+  todolist: ToDo[] = this.todoservice.getToDo();
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+  }
+  deleteTodo(id : number): void {
+    this.todoservice.removeToDo(id);
+    this.todolist=this.todoservice.getToDo();
   }
 
 }
